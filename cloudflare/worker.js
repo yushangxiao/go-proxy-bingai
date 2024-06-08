@@ -438,6 +438,9 @@ export default {
    * @returns
    */
   async fetch(request, env, ctx) {
+	  if (request.headers.get("CF-IPCountry") !='CN'){
+    return new Response("not server for your area now") 
+  }
     CUSTOM_OPTIONS.KievRPSSecAuth = env.USER_KievRPSSecAuth || '';
     CUSTOM_OPTIONS._RwBf = env.USER_RwBf || '';
     CUSTOM_OPTIONS.MUID = env.USER_MUID || '';
